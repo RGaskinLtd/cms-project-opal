@@ -1,22 +1,24 @@
+import pageGroups from './pageGroups'
+import { page } from './page'
+import { settings } from './singletons/settings'
+
 import blockContent from './blockContent'
-import crewMember from './crewMember'
-import castMember from './castMember'
-import movie from './movie'
-import person from './person'
-import screening from './screening'
-import plotSummary from './plotSummary'
-import plotSummaries from './plotSummaries'
+import { heroBanner } from './pageBuilder/banner/hero'
+import { card, cards } from './pageBuilder/cards/index'
 
 export const schemaTypes = [
   // Document types
-  movie,
-  person,
-  screening,
+  page,
+  pageGroups,
+
+  // Singletons
+  settings,
 
   // Other types
   blockContent,
-  plotSummary,
-  plotSummaries,
-  castMember,
-  crewMember,
+
+  // Components
+  heroBanner,
+  card,
+  cards
 ]
