@@ -1,41 +1,87 @@
-import { CogIcon } from '@sanity/icons'
+import { HiOutlineCog } from 'react-icons/hi'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const settings = defineType({
   name: 'settings',
   title: 'Settings',
   type: 'document',
-  icon: CogIcon,
-  // Uncomment below to have edits publish automatically as you type
-  // liveEdit: true,
+  icon: HiOutlineCog,
   fields: [
     defineField({
-      title: 'Primary Nav Color',
-      name: 'defaultBgColor',
-      type: 'color',
-    }),
-    defineField({
-      title: 'Secondary Nav Color',
-      name: 'secondaryBgColor',
-      type: 'color',
-    }),
-    defineField({
-      name: 'menuItems',
-      title: 'Menu Item list',
-      description: 'Links displayed on the header of your site.',
-      type: 'array',
-      of: [
-        {
-          title: 'Reference',
-          type: 'reference',
-          to: [
+      title: 'Navigation Settings',
+      name: 'navSettings',
+      type: 'object',
+      fields: [
+        defineField({
+          title: 'Primary Nav Color',
+          name: 'defaultBgColor',
+          type: 'color',
+        }),
+        defineField({
+          title: 'Secondary Nav Color',
+          name: 'secondaryBgColor',
+          type: 'color',
+        }),
+        defineField({
+          title: 'Logo',
+          name: 'logoObj',
+          type: 'object',
+          fields: [
+            defineField({
+              title: 'Logo',
+              name: 'logo',
+              type: 'image',
+            }),
+            defineField({
+              title: 'link',
+              name: 'link',
+              type: 'reference',
+              to: {type: 'page'}
+            })
+          ]
+        }),
+        defineField({
+          name: 'menuItems',
+          title: 'Menu Item list',
+          description: 'Links displayed on the header of your site.',
+          type: 'array',
+          of: [
             {
-              type: 'page',
+              title: 'Reference',
+              type: 'reference',
+              to: [
+                {
+                  type: 'page',
+                },
+                { type: 'pageGroups' }
+              ],
             },
-            { type: 'pageGroups' }
           ],
-        },
-      ],
+        }),
+        defineField({
+          title: 'Contact Us Button',
+          name: 'contactUsObj',
+          type: 'object',
+          fields: [
+            defineField({
+              title: 'Enable Contact Us Button',
+              name: 'enabled',
+              type: 'boolean'
+            }),
+            defineField({
+              title: 'Contact Us Text',
+              name: 'text',
+              type: 'string'
+            }),
+            defineField({
+              title: 'Contact Us Page',
+              name: 'link',
+              type: 'reference',
+              to: {type: 'page'}
+            })
+          ]
+        }),
+      ]
     }),
     defineField({
       name: 'footer',

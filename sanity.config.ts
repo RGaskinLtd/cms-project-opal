@@ -6,6 +6,8 @@ import { getDefaultDocumentNode } from './webPreview'
 import { schemaTypes } from './schemas'
 import { colorInput } from '@sanity/color-input'
 
+import { HiOutlineCog } from 'react-icons/hi'
+
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
@@ -29,6 +31,7 @@ export default defineConfig({
             // Our singleton type has a list item with a custom child
             S.listItem()
               .title("Settings")
+              .icon(HiOutlineCog)
               .id("settings")
               .child(
                 // Instead of rendering a list of documents, we render a single

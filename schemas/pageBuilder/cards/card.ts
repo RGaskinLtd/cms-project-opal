@@ -33,12 +33,12 @@ export const card = defineType({
           validation: Rule => Rule.required().min(1).max(30)
         }),
         defineField({
-          title: 'Link',
-          name: 'href',
-          type: 'url',
-          validation: Rule => Rule.required().uri({
-            scheme: ['http', 'https', 'mailto', 'tel']
-          })
+          name: 'link',
+          type: 'reference',
+          title: 'Internal Link',
+          to: [
+            { type: 'page' }
+          ]
         }),
       ],
     }),

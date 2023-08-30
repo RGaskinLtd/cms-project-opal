@@ -31,6 +31,16 @@ export const page = defineType({
           type: 'cards',
           title: 'Cards'
         }),
+        defineArrayMember({
+          name: 'infoSection',
+          type: 'infoSection',
+          title: 'Info Section',
+        }),
+        defineArrayMember({
+          name: 'cta',
+          type: 'cta',
+          title: 'Call To Action',
+        }),
         // etc...
       ],
     }),

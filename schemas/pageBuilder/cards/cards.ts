@@ -19,19 +19,32 @@ export const cards = defineType({
   },
   fields: [
     defineField({
+      title: 'Skewed Background',
       name: 'skewedBackground',
       type: 'boolean',
     }),
     defineField({
+      title: 'Background Color',
       name: 'backgroundColor',
+      type: 'color',
+    }),
+    defineField({
+      title: 'Card Background Color',
+      name: 'cardBgColor',
+      type: 'color',
+    }),
+    defineField({
+      title: 'Card Text Color',
+      name: 'cardTextColor',
       type: 'color',
     }),
     defineField({
       name: 'title',
       type: 'string',
-      title: 'title'
+      title: 'Title'
     }),
     defineField({
+      title: 'Cards',
       name: 'cards',
       type: 'array',
       of: [

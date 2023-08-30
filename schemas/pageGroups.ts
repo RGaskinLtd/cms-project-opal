@@ -29,7 +29,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'groupName',
+      title: 'title',
     },
   },
 })

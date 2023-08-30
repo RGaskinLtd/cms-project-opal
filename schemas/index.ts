@@ -2,9 +2,11 @@ import pageGroups from './pageGroups'
 import { page } from './page'
 import { settings } from './singletons/settings'
 
-import blockContent from './blockContent'
+import { blockContent } from './blockContent'
 import { heroBanner } from './pageBuilder/banner/hero'
 import { card, cards } from './pageBuilder/cards/index'
+import { infoSection } from './pageBuilder/sections/infoSection'
+import { cta } from './pageBuilder/cta'
 
 export const schemaTypes = [
   // Document types
@@ -20,5 +22,7 @@ export const schemaTypes = [
   // Components
   heroBanner,
   card,
-  cards
+  cards,
+  infoSection,
+  cta
 ]
