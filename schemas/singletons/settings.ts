@@ -85,41 +85,77 @@ export const settings = defineType({
     }),
     defineField({
       name: 'footer',
-      description:
-        'This is a block of text that will be displayed at the bottom of the page.',
       title: 'Footer Info',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
+      type: 'object',
+      fields: [
+        defineField({
+          title: 'Background Color',
+          name: 'bgColor',
+          type: 'color',
         }),
-      ],
+        defineField({
+          title: 'Text Color',
+          name: 'textColor',
+          type: 'color',
+        }),
+        defineField({
+          title: 'Social Links',
+          name: 'socialLinks',
+          type: 'object',
+          fields: [
+            defineField({
+              title: 'LinkedIn',
+              name: 'linkedin',
+              type: 'url',
+              validation: (Rule) => Rule.uri({
+                allowRelative: true,
+                scheme: ['http', 'https', 'mailto', 'tel'],
+              }),
+            }),
+            defineField({
+              title: 'Github',
+              name: 'github',
+              type: 'url',
+              validation: (Rule) => Rule.uri({
+                allowRelative: true,
+                scheme: ['http', 'https', 'mailto', 'tel'],
+              }),
+            }),
+            defineField({
+              title: 'Facebook',
+              name: 'facebook',
+              type: 'url',
+              validation: (Rule) => Rule.uri({
+                allowRelative: true,
+                scheme: ['http', 'https', 'mailto', 'tel'],
+              }),
+            }),
+          ]
+        }),
+        defineField({
+          title: 'Copyright Text',
+          name: 'copyright',
+          type: 'string'
+        })
+      ]
     }),
     defineField({
-      name: 'ogImage',
-      title: 'Open Graph Image',
-      type: 'image',
-      description: 'Displayed on social cards and search engine results.',
-      options: {
-        hotspot: true,
-      },
+      name: 'SEOSettings',
+      title: 'SEO Meta Tags',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'ogImage',
+          title: 'Open Graph Image',
+          type: 'image',
+          description: 'Displayed on social cards and search engine results.',
+          options: {
+            hotspot: true,
+          },
+        }),
+      ]
     }),
+
   ],
   preview: {
     prepare() {

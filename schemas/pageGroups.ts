@@ -14,6 +14,12 @@ export default defineType({
       description: 'page grouping for the navbar',
     }),
     defineField({
+      title: 'Page',
+      name: 'page',
+      type: 'reference',
+      to: [{type: 'page'}],
+    }),
+    defineField({
       name: 'group',
       title: 'group',
       type: 'array',
