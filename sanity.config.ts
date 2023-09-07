@@ -16,9 +16,9 @@ const singletonTypes = new Set(["settings"])
 
 export default defineConfig({
   name: 'default',
-  title: 'cms-project-opal',
+  title: 'Project Opal',
 
-  projectId: 'vduxpjnc',
+  projectId: 'd3b5ou77',
   dataset: 'production',
 
   plugins: [
