@@ -1,7 +1,8 @@
 // ./schemas/heroType.ts
 
 import {defineField, defineType} from 'sanity'
-import { SectionIcon } from '@radix-ui/react-icons';
+import {SectionIcon} from '@radix-ui/react-icons'
+import {blocksToText} from '../../../utils/helpers'
 
 export const infoSection = defineType({
   name: 'infoSection',
@@ -10,72 +11,35 @@ export const infoSection = defineType({
   icon: SectionIcon,
   fields: [
     defineField({
-      title: 'Content',
       name: 'content',
-      type: 'object',
+      type: 'basicBlockContent',
+    }),
+    defineField({
+      title: 'Reverse Direction',
+      name: 'reverseDirection',
+      type: 'boolean',
+    }),
+    defineField({
+      title: 'Info Section Image',
+      name: 'image',
+      type: 'image',
       fields: [
         defineField({
-          title: 'Heading',
-          name: 'headingObj',
-          type: 'object',
-          fields: [
-            defineField({
-              title: 'Heading',
-              name: 'heading',
-              type: 'string',
-            }),
-            defineField({
-              title: 'Green Overline',
-              name: 'greenOverline',
-              type: 'boolean',
-            }),
-          ]
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
         }),
-
-        defineField({
-          name: 'tagline',
-          type: 'blockContent',
-        }),
-
-        defineField({
-          title: 'Reverse Direction',
-          name: 'reverseDirection',
-          type: 'boolean',
-        }),
-
-        defineField({
-          title: 'Info Section Image',
-          name: 'image',
-          type: 'image',
-          fields: [
-            defineField({
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative text',
-            }),
-          ],
-        })
-      ]
-    }),
-    defineField({
-      title: 'Background Color',
-      name: 'bgColor',
-      type: 'color',
-    }),
-    defineField({
-      title: 'Text Color',
-      name: 'textColor',
-      type: 'color',
-    }),
+      ],
+    })
   ],
   preview: {
     select: {
-      title: 'content.headingObj.heading',
+      title: 'content',
     },
     prepare(selection) {
-      const {title } = selection
+      const {title} = selection
       return {
-        title,
+        title: blocksToText(title),
       }
     },
   }

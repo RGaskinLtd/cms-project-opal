@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-test",
+  "name": "cms-project-opal",
   "private": true,
   "version": "1.0.0",
   "main": "package.json",
@@ -9,8 +9,7 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy",
-    "lint": "eslint --ext .jsx,.tsx,.js,.ts . --fix"
+    "deploy-graphql": "sanity graphql deploy"
   },
   "keywords": [
     "sanity"
@@ -18,30 +17,21 @@
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.0",
     "@sanity/color-input": "^3.1.0",
-    "@sanity/orderable-document-list": "^1.1.0",
-    "@sanity/ui": "^1.8.2",
+    "@sanity/icons": "^2.4.1",
     "@sanity/vision": "^3.15.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1",
+    "react-icons": "^3.11.0",
     "react-is": "^18.2.0",
-    "react-player": "^2.13.0",
     "sanity": "^3.15.1",
-    "sanity-plugin-iframe-pane": "^2.6.0",
-    "sanity-plugin-media": "^2.2.2",
-    "sanity-plugin-simpler-color-input": "^1.1.0",
-    "sanity-plugin-workflow": "^1.0.1",
+    "sanity-plugin-iframe-pane": "^2.5.5",
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^3.0.0",
     "@types/react": "^18.0.25",
     "@types/styled-components": "^5.1.26",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
     "eslint": "^8.6.0",
-    "eslint-config-sanity": "^7.0.1",
-    "eslint-plugin-react": "^7.33.2",
     "prettier": "^2.8.8",
     "typescript": "^4.9.5"
   },

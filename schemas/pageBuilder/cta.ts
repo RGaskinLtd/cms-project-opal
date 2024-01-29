@@ -1,7 +1,11 @@
-// ./schemas/heroType.ts
-
 import {defineField, defineType} from 'sanity'
-import { BiMouse } from 'react-icons/bi'
+import {BiMouse} from 'react-icons/bi'
+
+function isLinkTypeHidden({parent, linkType}: { parent: {linkType: string}, linkType: 'internal' | 'external' | 'file' }) {
+  const linkTypes = ['internal', 'external', 'file']
+  const hideWhenLinkTypesAre = linkTypes.filter((item) => item !== linkType)
+  return !parent?.linkType || (hideWhenLinkTypesAre.includes(parent?.linkType))
+}
 
 export const cta = defineType({
   name: 'cta',
@@ -10,57 +14,74 @@ export const cta = defineType({
   icon: BiMouse,
   fields: [
     defineField({
-      title: 'Call To Action',
-      name: 'ctaObj',
-      type: 'object',
-      fields: [
-        defineField({
-          title: 'Text',
-          name: 'text',
-          type: 'string',
-        }),
-        defineField({
-          name: 'link',
-          type: 'reference',
-          title: 'Internal Link',
-          to: [
-            { type: 'page' }
-          ]
-        }),
-        defineField({
-          title: 'Button Background Color',
-          name: 'btnBgColor',
-          type: 'color',
-        }),
-        defineField({
-          title: 'Button Text Color',
-          name: 'btnTextColor',
-          type: 'color',
-        }),
-      ]
+      name: 'text',
+      type: 'string',
+      title: 'CTA Text',
     }),
     defineField({
-      title: 'Align',
-      name: 'align',
+      name: 'style',
+      type: 'string',
+      title: 'CTA Style',
+      options: {
+        list: [
+          {title: 'Arrow', value: 'arrow'},
+          {title: 'PO', value: 'po'},
+        ]
+      }
+    }),
+    defineField({
+      title: 'CTA Color',
+      name: 'color',
       type: 'string',
       options: {
         list: [
-          {title: 'Left', value: 'left'},
-          {title: 'Center', value: 'center'},
-          {title: 'Right', value: 'right'},
+          {title: 'Green', value: 'green'},
+          {title: 'Opal', value: 'opal'},
+          {title: 'Solid Opal', value: 'solid-opal'},
         ],
-        layout: 'radio',
       },
+      initialValue: 'opal'
     }),
     defineField({
-      title: 'Background Color',
-      name: 'bgColor',
-      type: 'color',
+      title: 'Link Type',
+      name: 'linkType',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Internal', value: 'internal'},
+          {title: 'External', value: 'external'},
+          {title: 'File', value: 'file'},
+        ],
+        layout: 'radio'
+      }
+    }),
+    defineField({
+      name: 'internal',
+      type: 'reference',
+      title: 'Internal Link',
+      to: [{type: 'page'},],
+      hidden: ({parent}) => isLinkTypeHidden({parent, linkType: 'internal'})
+    }),
+    defineField({
+      title: 'File Link',
+      name: 'file',
+      type: 'file',
+      hidden: ({parent}) => isLinkTypeHidden({parent, linkType: 'file'})
+    }),
+    defineField({
+      title: 'External Link',
+      name: 'external',
+      type: 'externalUrl',
+      hidden: ({parent}) => isLinkTypeHidden({parent, linkType: 'external'})
     }),
   ],
   preview: {
-    prepare() {
-      return { title: 'Call To Action' }
+    select: {
+      title: 'text',
+    },
+    prepare(selection) {
+      const {title} = selection
+      return {title: title ? `CTA: ${title}` : 'Call To Action'}
     }
   }
 })

@@ -1,4 +1,5 @@
-import { card } from "./card";
-import { cards } from "./cards";
+import {cardShortArticle} from './cardShortArticle'
+import {cardSummary} from './cardSummary'
+import {cards} from './cards'
 
-export { card, cards }
+export {cardShortArticle, cardSummary, cards}

@@ -1,7 +1,5 @@
-// ./schemas/heroType.ts
-
 import {defineField, defineType} from 'sanity'
-import { BiRectangle } from 'react-icons/bi'
+import {BiRectangle} from 'react-icons/bi'
 export const heroBanner = defineType({
   name: 'hero',
   type: 'object',
@@ -9,48 +7,99 @@ export const heroBanner = defineType({
   icon: BiRectangle,
   fields: [
     defineField({
-      title: 'Heading',
-      name: 'headingObj',
-      type: 'object',
-      fields: [
-        defineField({
-          title: 'Heading',
-          name: 'heading',
-          type: 'string',
-        }),
-        defineField({
-          title: 'Green Overline',
-          name: 'greenOverline',
-          type: 'boolean',
-        }),
-      ]
+      name: 'readable',
+      type: 'readable',
+      initialValue: false
     }),
     defineField({
-      name: 'tagline',
+      name: 'theme',
+      type: 'theme',
+      title: 'Theme',
+      initialValue: 'dark'
+    }),
+    defineField({
+      name: 'template',
+      type: 'string',
+      title: 'Template',
+      options: {
+        list: [
+          { title: 'Full Screen', value: 'full' },
+          { title: 'Normal', value: 'normal' },
+        ]
+      },
+      initialValue: 'dark'
+    }),
+    defineField({
+      title: 'Spacing',
+      name: 'spacing',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'none', value: 'none'},
+          {title: 'small', value: 'sm'},
+          {title: 'medium', value: 'md'},
+          {title: 'large', value: 'lg'},
+          {title: 'extra large', value: 'xl'},
+        ]
+      },
+      initialValue: 'none'
+    }),
+    defineField({
+      title: 'Text Content Max Width',
+      name: 'maxWidth',
+      type: 'string',
+      options: {
+        list: [
+          {title: '6/12', value: '6/12'},
+          {title: '7/12', value: '7/12'},
+          {title: '8/12', value: '8/12'},
+          {title: '9/12', value: '9/12'},
+          {title: '10/12', value: '10/12'},
+          {title: '11/12', value: '11/12'},
+          {title: 'full', value: 'full'},
+        ]
+      }
+    }),
+    defineField({
+      title: 'Eye Brow',
+      name: 'eyebrow',
       type: 'string',
     }),
     defineField({
-      title: 'Background Color',
-      name: 'bgColor',
-      type: 'color',
+      title: 'Main Content',
+      name: 'mainContent',
+      type: 'basicBlockContent',
     }),
     defineField({
-      title: 'Text Color',
-      name: 'textColor',
-      type: 'color',
+      title: 'CTA\'s',
+      name: 'ctas',
+      type: 'array',
+      of: [{type: 'cta'}]
     }),
     defineField({
       title: 'Background Image',
       name: 'bgImage',
       type: 'image',
       options: {hotspot: true},
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        }),
-      ],
+    }),
+
+    // Content to the Right
+    defineField({
+      name: 'productsNavigation',
+      type: 'reference',
+      title: 'Products Navigation',
+      to: [{type: 'section'}],
+      options: {
+        filter: 'content[0]._type == "productsNav"',
+      },
+      hidden: ({parent}) => !!parent?.heroImage || !!parent?.threeDModel
+    }),
+    defineField({
+      name: 'threeDModel',
+      title: '3D Model',
+      type: 'boolean',
+      initialValue: true,
+      hidden: ({parent}) => !!parent?.productsNavigation || !!parent?.heroImage
     }),
     defineField({
       title: 'Hero Banner Image',
@@ -63,16 +112,17 @@ export const heroBanner = defineType({
           title: 'Alternative text',
         }),
       ],
+      hidden: ({parent}) => !!parent?.productsNavigation || !!parent?.threeDModel
     })
   ],
   preview: {
     select: {
-      title: 'headingObj.heading',
+      title: 'eyebrow',
     },
     prepare(selection) {
-      const {title } = selection
+      const {title} = selection
       return {
-        title,
+        title: `Hero${title ? ':' : ''} ${title ?? ''}`,
       }
     },
   }
