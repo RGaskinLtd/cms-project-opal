@@ -8,7 +8,6 @@ export const theme = defineType({
     list: [
       {title: 'Light', value: 'light'},
       {title: 'Dark', value: 'dark'},
-      {title: 'White Text', value: 'white text'},
     ]
   },
   initialValue: 'light'

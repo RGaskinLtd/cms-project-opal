@@ -25,13 +25,10 @@ import {infoSection} from './pageBuilder/sections/infoSection'
 import {content} from './pageBuilder/content'
 import {stats, stat} from './pageBuilder/stats'
 import {cta} from './pageBuilder/cta'
-import {productHighlightBanner} from './pageBuilder/banner/products'
-import {productsNav} from './pageBuilder/banner/productNav'
 import {ourProducts} from './pageBuilder/banner/ourProducts'
 import {latestNews} from './pageBuilder/sections/latestNews'
 import {highlightedNews} from './pageBuilder/sections/highlightedNews'
 import {newsNavigator} from './pageBuilder/sections/newsNavigator'
-import {issuersMap} from './pageBuilder/sections/issuersMap'
 import {soloCta} from './pageBuilder/sections/soloCta'
 import {accordion, accordions} from './pageBuilder/accordions'
 import {easyRead} from './base/easyRead'
@@ -39,9 +36,9 @@ import {splitContent} from './pageBuilder/sections/splitContent'
 import {imageBanner} from './pageBuilder/banner/imageBanner'
 import {ourPeople} from './pageBuilder/banner/ourPeople'
 import {people} from './documents/people'
-import {contactInfo} from './pageBuilder/sections/contactInfo'
 import {ourPartners} from './pageBuilder/banner/ourPartners'
 import {multiInfoSection} from './pageBuilder/sections/multiInfoSection'
+import {splitImages} from './pageBuilder/sections/splitImages'
 
 export const schemaTypes = [
   // Document types
@@ -74,22 +71,17 @@ export const schemaTypes = [
   accordions,
   multiInfoSection,
   infoSection,
+  splitImages,
   splitContent,
-  issuersMap,
   ourPeople,
   ourProducts,
   ourPartners,
   latestNews,
   highlightedNews,
   newsNavigator,
-  contactInfo,
   content,
   stat,
   stats,
   cta,
   soloCta,
-
-  // bespoke components
-  productHighlightBanner,
-  productsNav,
 ]

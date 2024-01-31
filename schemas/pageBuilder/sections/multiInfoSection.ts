@@ -1,5 +1,3 @@
-// ./schemas/heroType.ts
-
 import {defineField, defineType} from 'sanity'
 import {SectionIcon} from '@radix-ui/react-icons'
 export const multiInfoSection = defineType({

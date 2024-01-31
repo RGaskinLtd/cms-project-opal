@@ -75,6 +75,11 @@ export const page = defineType({
           title: 'Split Content',
         }),
         defineArrayMember({
+          name: 'splitImages',
+          type: 'splitImages',
+          title: 'Split Images',
+        }),
+        defineArrayMember({
           name: 'ourPeople',
           type: 'ourPeople',
           title: 'Our People',
@@ -83,11 +88,6 @@ export const page = defineType({
           name: 'content',
           type: 'content',
           title: 'Rich Text Content',
-        }),
-        defineArrayMember({
-          name: 'productHighlightBanner',
-          type: 'productHighlightBanner',
-          title: 'Product Highlight Banner',
         }),
         defineArrayMember({
           name: 'ourProducts',
@@ -103,16 +103,6 @@ export const page = defineType({
           name: 'latestNews',
           type: 'latestNews',
           title: 'Latest News',
-        }),
-        defineArrayMember({
-          name: 'issuersMap',
-          type: 'issuersMap',
-          title: 'Issuers Map'
-        }),
-        defineArrayMember({
-          name: 'contactInfo',
-          type: 'contactInfo',
-          title: 'Contact Info'
         }),
         defineArrayMember({
           name: 'soloCta',

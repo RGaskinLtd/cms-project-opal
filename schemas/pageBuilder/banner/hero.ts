@@ -23,8 +23,8 @@ export const heroBanner = defineType({
       title: 'Template',
       options: {
         list: [
-          { title: 'Full Screen', value: 'full' },
-          { title: 'Normal', value: 'normal' },
+          {title: 'Full Screen', value: 'full'},
+          {title: 'Normal', value: 'normal'},
         ]
       },
       initialValue: 'dark'

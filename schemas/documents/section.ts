@@ -24,8 +24,6 @@ export const section = defineType({
         {type: 'cards'},
         {type: 'infoSection'},
         {type: 'splitContent'},
-        {type: 'productHighlightBanner'},
-        {type: 'productsNav'},
         {type: 'soloCta'},
         {type: 'latestNews'},
         {
