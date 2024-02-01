@@ -8,6 +8,10 @@ export const latestNews = defineType({
   icon: BsNewspaper,
   fields: [
     defineField({
+      name: 'theme',
+      type: 'theme',
+    }),
+    defineField({
       title: 'Title',
       name: 'title',
       type: 'string',

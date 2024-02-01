@@ -11,6 +11,10 @@ export const infoSection = defineType({
   icon: SectionIcon,
   fields: [
     defineField({
+      name: 'theme',
+      type: 'theme',
+    }),
+    defineField({
       name: 'content',
       type: 'basicBlockContent',
     }),
